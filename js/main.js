@@ -20,22 +20,7 @@ function handleEntryForm(event) {
   data.nextEntryId++;
   data.entries.unshift(formValues);
   $image.setAttribute('src', '/images/placeholder-image-square.jpg');
-  $entryForm.elements.title.value = '';
-  $entryForm.elements.photoUrl.value = '';
-  $entryForm.elements.notes.value = '';
+  $entryForm.reset();
 }
 
 $entryForm.addEventListener('submit', handleEntryForm);
-
-var previousDataJSON = localStorage.getItem('javascript-local-storage');
-
-if (previousDataJSON !== null) {
-  JSON.parse(previousDataJSON);
-}
-
-function handleStroage(event) {
-  var dataJSON = JSON.stringify(data);
-  localStorage.setItem('javascript-local-storage', dataJSON);
-}
-
-window.addEventListener('beforeunload', handleStroage);
