@@ -11,14 +11,49 @@
     integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header>
+    <div class="container header-background-color">
+      <div class="row">
+        <div class="column-full column-half">
+          <h3>Code Journal</h3>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div data-view="entry-form">
+      <form class="form-background">
+        <div class="container">
+          <div class="row">
+            <div class="column-full">
+              <h1>New Entry</h1>
+            </div>
+            <div class="column-half">
+              <img class="image" src="/images/placeholder-image-square.jpg" alt="photoUrl">
+            </div>
+            <div class="column-half">
+              <label for="title">Title</label>
+              <input required class="title" name="title" type="text" id="title">
+              <label for="photoUrl">Photo URL</label>
+              <input required class="photoUrl" name="photoUrl" type="text" id="photoUrl">
+            </div>
+            <div class="column-full">
+              <label for="notes">Notes</label>
+              <textarea class="notes" name="notes" id="notes" cols="30" rows="10"></textarea>
+              <div class="button">
+                <button>SAVE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

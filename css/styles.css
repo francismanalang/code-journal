@@ -1,0 +1,11 @@
+.form-background {
+  background-color: rgb(247, 247, 247);
+}
+
+.button {
+  padding-bottom: 50px;
+  padding-top: 12px;
+  padding-left: 5px;
+  display: flex;
+  justify-content: flex-end;
+}
