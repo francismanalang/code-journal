@@ -12,7 +12,7 @@ textarea {
   display: block;
   width: 100%;
   font-family: "Open Sans", sans-serif;
-  margin: 10px;
+  margin: auto;
 }
 
 textarea,
@@ -27,7 +27,7 @@ input {
 }
 
 label {
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 img {
