@@ -21,14 +21,15 @@
   <header>
     <div class="container header-background-color">
       <div class="row">
-        <div class="column-full column-half">
+        <div class="column-full column-half nav-height">
           <h3>Code Journal</h3>
+          <button class="navbar-button">Entries</button>
         </div>
       </div>
     </div>
   </header>
   <main>
-    <div data-view="entry-form">
+    <div class="data-view" data-view="entry-form">
       <form class="form-background">
         <div class="container">
           <div class="row">
@@ -48,12 +49,29 @@
               <label for="notes">Notes</label>
               <textarea class="notes" name="notes" id="notes" cols="30" rows="10"></textarea>
               <div class="button">
-                <button>SAVE</button>
+                <button class="save-button">SAVE</button>
               </div>
             </div>
           </div>
         </div>
       </form>
+    </div>
+    <div class="data-view" data-view="entries">
+      <div class="container view hidden">
+        <div class="row">
+          <div class="column-full">
+            <div class="display-flex">
+              <h1>Entries</h1>
+              <div class="entries-button">
+                <button class="new-button">NEW</button>
+              </div>
+            </div>
+          </div>
+          <ul>
+          </ul>
+        </div>
+      </div>
+      <p class="no-entries hidden">No entries have been recorded.</p>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
