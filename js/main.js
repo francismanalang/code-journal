@@ -1,4 +1,4 @@
-var $entryForm = document.querySelector('.form-background');
+var $entryForm = document.querySelector('.form-view');
 var $image = document.querySelector('.image');
 var $photoUrl = document.querySelector('.photoUrl');
 
@@ -86,7 +86,7 @@ function handleContentLoaded(event) {
 window.addEventListener('DOMContentLoaded', handleContentLoaded);
 
 var viewEntries = document.querySelector('.navbar-button');
-var entriesContainer = document.querySelector('.view');
+var entriesContainer = document.querySelector('.entries-view');
 var $noEntries = document.querySelector('.no-entries');
 
 function handleEntries(event) {
