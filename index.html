@@ -49,11 +49,26 @@
               <label for="notes">Notes</label>
               <textarea class="notes" name="notes" id="notes" cols="30" rows="10"></textarea>
               <div class="button">
+                <p class="delete hidden"><u>Delete Entry</u></p>
+                <div></div>
                 <button class="save-button">SAVE</button>
               </div>
             </div>
           </div>
         </div>
+        <!-- <div class="container">
+          <div class="row">
+            <div class="column-full">
+              <div class="modal-container hidden">
+                <p>Are you sure you want to delete this entry?</p>
+                <div class="modal display-flex">
+                  <button class="modal-button modal-button1">CANCEL</button>
+                  <button class="modal-button modal-button2">CONFIRM</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
       </form>
     </div>
     <div class="view" data-view="entries">
@@ -72,6 +87,14 @@
         </div>
       </div>
       <p class="no-entries hidden">No entries have been recorded.</p>
+      <div class="modal-display dark-background hidden">
+        <div class="modal-container hidden">
+          <p>Are you sure you want to delete this entry?</p>
+          <div class="modal display-flex">
+            <button class="modal-button modal-button1">CANCEL</button>
+            <button class="modal-button modal-button2">CONFIRM</button>
+          </div>
+        </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
