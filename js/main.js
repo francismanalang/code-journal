@@ -21,20 +21,28 @@ function handleEntryForm(event) {
     notes: $entryForm.elements.notes.value
   };
 
-  getUl.prepend(journalEntries(formValues));
-  entriesContainer.className = 'container entries-view';
-  $entryForm.className = 'form-view hidden';
-
-  formValues.entryId = data.nextEntryId;
-  data.nextEntryId++;
-  data.entries.unshift(formValues);
+  var $liElement = document.querySelectorAll('li');
+  if (data.editing !== null) {
+    formValues.entryId = data.editing.entryId;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.editing.entryId === data.entries[i].entryId) {
+        data.entries[i] = formValues;
+        $liElement[i].replaceWith(journalEntries(formValues));
+        data.editing = null;
+        viewSwapping('entries');
+      }
+    }
+  } else {
+    formValues.entryId = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(formValues);
+    getUl.prepend(journalEntries(formValues));
+    viewSwapping('entries');
+  }
   $image.setAttribute('src', '/images/placeholder-image-square.jpg');
   $entryForm.reset();
+  viewSwapping('entries');
   data.view = 'entries';
-
-  // if (formValues === data.editing) {
-  //   formValues.replaceWith(data.editing);
-  // }
 }
 
 $entryForm.addEventListener('submit', handleEntryForm);
@@ -85,8 +93,7 @@ function handleUl(event) {
   if (event.target.tagName === 'I') {
     var closestLiAttributeString = event.target.closest('li').getAttribute('data-entry-id');
     var closestLiAttribute = Number(closestLiAttributeString);
-    $entryForm.className = 'form-view';
-    entriesContainer.className = 'container entries-view hidden';
+    viewSwapping('entry-form');
     data.view = 'entry-form';
   }
   for (var i = 0; i < data.entries.length; i++) {
@@ -97,6 +104,7 @@ function handleUl(event) {
       $notes.value = data.editing.notes;
       $image.setAttribute('src', data.editing.photoUrl);
       $entryTitle.textContent = 'Edit Entry';
+      viewSwapping('entry-form');
     }
   }
 }
@@ -123,14 +131,23 @@ function handleContentLoaded(event) {
 
 window.addEventListener('DOMContentLoaded', handleContentLoaded);
 
+function viewSwapping(event) {
+  if (event === 'entry-form') {
+    $entryForm.className = 'form-view';
+    entriesContainer.className = 'container entries-view hidden';
+  } else if (event === 'entries') {
+    $entryForm.className = 'form-view hidden';
+    entriesContainer.className = 'container entries-view';
+  }
+}
+
 var viewEntries = document.querySelector('.navbar-button');
 var entriesContainer = document.querySelector('.entries-view');
 var $noEntries = document.querySelector('.no-entries');
 
 function handleEntries(event) {
   if (event.target === viewEntries) {
-    entriesContainer.className = 'container entries-view';
-    $entryForm.className = 'form-view hidden';
+    viewSwapping('entries');
   }
   if (data.entries.length === 0) {
     $noEntries.className = 'no-entries';
@@ -146,10 +163,11 @@ var $newButton = document.querySelector('.new-button');
 
 function handleNewButton(event) {
   if (event.target === $newButton) {
-    $entryForm.className = 'form-view';
-    entriesContainer.className = 'container entries-view hidden';
+    $noEntries.className = 'no-entries hidden';
+    viewSwapping('entry-form');
     $entryForm.reset();
     $image.setAttribute('src', '/images/placeholder-image-square.jpg');
+    $entryTitle.textContent = 'New Entry';
     data.editing = null;
     data.view = 'entry-form';
   }
