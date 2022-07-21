@@ -82,3 +82,7 @@ li {
 p {
   font-family: "Open Sans", sans-serif;
 }
+
+h2 {
+  display: inline;
+}
